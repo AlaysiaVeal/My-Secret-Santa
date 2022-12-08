@@ -13,7 +13,7 @@ Date: 12/8/22
 ### **_Project Planning_**
 
 [Trello](https://trello.com/b/Qjmk7XPv/secret-santa) |
-[Frontend Repo](https://github.com/AlaysiaVeal/My-Secret-Santa.git)
+[Backend Repo](https://github.com/AlaysiaVeal/My-Secret-Santa-Backend.git)
 
 ---
 
