@@ -1,4 +1,12 @@
+/* import { useState, useEffect } from 'react' */
+
 const Home = () => {
-  return
+  /* const [list, setList] = useState([]) */
+
+  return (
+    <div>
+      <h2>Welcome</h2>
+    </div>
+  )
 }
 export default Home
