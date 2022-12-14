@@ -1,48 +1,53 @@
 import Client from '../services/api'
-import { useEffect, useState, useParams } from 'react'
+import { useEffect, useState } from 'react'
 import ListCard from '../components/listCard'
+import { useNavigate, useParams } from 'react-router-dom'
 
-const List = ({ user }) => {
-  const listId = useParams()
+const List = ({ user, authenticated }) => {
+  let navigate = useNavigate()
+  const userId = useParams()
   const initial = {
+    userId: parseInt(user?.id),
     username: '',
     list: ''
   }
-  const [lists, setList] = useState({ username: '', lists: '' })
-  const [formValues, setFormValues] = useState(initial)
+  const [lists, setList] = useState([])
+  let [formValues, setFormValues] = useState(initial)
 
-  const handleSubmit = async () => {
-    await Client.post('/list', { formValues })
-    setFormValues(formValues)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const newData = {
+      userId: parseInt(formValues.userId),
+      ...formValues
+    }
+    const payload = await Client.post('/list', newData)
+    console.log(formValues)
+    setFormValues(payload)
   }
 
-  useEffect(async () => {
-    const res = await Client.post(`/list/${listId}`)
+  const getList = async () => {
+    const res = await Client.get('/list/')
     setList(res.data)
-  })
+    navigate('/')
+  }
 
   const handleChange = (e) => {
     setFormValues({
       ...formValues,
-      [e.target.name]: e.target.value,
-      userId: user.id
+      [e.target.name]: e.target.value
+      /* userId: user.id */
     })
   }
 
-  return (
+  return user && authenticated ? (
     <div>
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>username</label>
-          <input
-            type="username"
-            onChange={handleChange}
-            name="username"
-            required
-          />
+          <input type="username" onChange={handleChange} name="username" />
         </div>
         <div className="input-container">
-          <label>List </label>
+          <label>Item 1 </label>
           <input type="list" onChange={handleChange} name="list" required />
         </div>
         <div className="button-container">
@@ -50,16 +55,18 @@ const List = ({ user }) => {
         </div>
       </form>
       <div>
-        {lists.map((list) => (
+        {lists?.map((list) => (
           <ListCard
-            id={list?.id}
+            id={user?.id}
             key={list?.id}
             username={list?.username}
-            list={list?.list}
+            item={list?.items}
           />
         ))}
       </div>
     </div>
+  ) : (
+    <h2>Login to create a list</h2>
   )
 }
 
