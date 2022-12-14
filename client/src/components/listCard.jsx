@@ -1,21 +1,21 @@
-import { useEffect } from "react"
+import { useEffect,useState } from "react"
+import Client from "../services/api"
 
-const List = () => {
-  const [list, setList] = useState('')
+const ListCard = ({username, list, id}) => {
+ const [lists, setLists] = useState('') 
   useEffect(async() => {
       const res = await Client.get(`/list/${id}`)
-      console.log(data)
-      setList(res.data)
+      setLists(res.data)
   })
   return (
     <div>
-      {list.map((list)=> (
-      <div key={list.id}>
-          <h2>{list.name}</h2>
-          <h3>{list.list}</h3>
+      {/* {lists.map((list)=> ( */}
+      <div key={id}>
+          <h2>{username}</h2>
+          <h3>{list}</h3>
       </div>
-      ))}
+    {/*   ))} */}
     </div>
   )
 }
-export default List
+export default ListCard
