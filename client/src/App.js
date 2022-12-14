@@ -10,7 +10,7 @@ import Login from './pages/Login'
 import { useState, useEffect } from 'react'
 
 function App() {
-  const [toggleAuthenticated, authenticated] = useState(false)
+  const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
 
   const handleLogOut = () => {
@@ -44,8 +44,24 @@ function App() {
             element={<List authenticated={authenticated} user={user} />}
           />
           <Route path="/about" element={<About />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/register"
+            element={
+              <Register
+                setUser={setUser}
+                toggleAuthenticated={toggleAuthenticated}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <Login
+                setUser={setUser}
+                toggleAuthenticated={toggleAuthenticated}
+              />
+            }
+          />
         </Routes>
       </header>
       <main></main>
