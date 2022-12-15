@@ -7,14 +7,10 @@ const ListGenerator = ({ user,handleClick}) => {
     <div>
       <button onClick={handleClick}></button>
     {user.map((res) => {
-      return user && authenticated ? (
+      return  (
           <div key={res?.id}>
           <h3>{res?.username}</h3>
           </div>
-      ) : (
-        <div>
-          <h2></h2>
-        </div>
       )
       }
       )}
