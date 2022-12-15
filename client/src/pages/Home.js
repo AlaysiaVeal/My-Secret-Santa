@@ -13,7 +13,8 @@ const Home = () => {
   }
   return (
     <div>
-      <h2>Welcome</h2>
+      <h2 className="">Welcome to Santa Wishlist!</h2>
+      <h3>Pick a Name</h3>
       <button onClick={handleClick}></button>
       {user?.map((res) => (
         <ListGenerator
