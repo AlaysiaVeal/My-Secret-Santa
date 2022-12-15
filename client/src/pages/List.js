@@ -1,11 +1,26 @@
 import Client from '../services/api'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import ListCard from '../components/listCard'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const List = ({ user, authenticated }) => {
-  let navigate = useNavigate()
-  const { listId } = useParams()
+  const ref = useRef(null)
+  const submitEditRef = useRef(null)
+  const editButton = useRef(null)
+  const transformEdit = async (content) => {
+    setEditValue({ content: content })
+    const editButtonRef = editButton.current
+    const textarea = ref.current
+    const submitEdit = submitEditRef.current
+    textarea.className = 'editTextArea'
+    textarea.readOnly = false
+    submitEdit.className = 'submitEdit'
+    editButtonRef.className = 'hiddenButton'
+  }
+  const initialEdit = {
+    list: ''
+  }
+  const [list, editList] = useState(initialEdit)
 
   const [lists, setList] = useState([])
 
@@ -23,7 +38,6 @@ const List = ({ user, authenticated }) => {
     res.data.forEach((list) => {
       if (list.userId === user.id) {
         sortedLists.push(list)
-        /*  console.log(sortedLists) */
       }
     })
     setList(sortedLists)
@@ -45,6 +59,15 @@ const List = ({ user, authenticated }) => {
   }
   const handleDelete = async (id) => {
     await Client.delete(`/list/${id}`)
+    getList()
+  }
+
+  const editChange = (e) => {
+    editList({ ...list, [e.target.name]: e.target.value })
+  }
+
+  const handleEdit = async (id) => {
+    await Client.put(`/list/${id}`, editList)
     getList()
   }
 
