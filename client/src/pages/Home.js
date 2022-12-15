@@ -2,17 +2,19 @@ import { useState, useEffect } from 'react'
 import Client from '../services/api'
 
 import ListGenerator from '../components/ListGenerator'
+import List from './List'
 
 const Home = () => {
   const [user, setUsers] = useState([])
-  const handleClick = async (obj) => {
+
+  const handleClick = async (data, id) => {
     const res = await Client.get('/user')
-    const keys = Object.keys(res.data)
-    setUsers(Math.floor(Math.random() * keys.length))
+    setUsers(res.data)
   }
   return (
     <div>
       <h2>Welcome</h2>
+      <button onClick={handleClick}></button>
       {user?.map((res) => (
         <ListGenerator
           id={res?.id}
@@ -21,7 +23,6 @@ const Home = () => {
           username={res?.username}
         />
       ))}
-      <ListGenerator handleClick={handleClick} user={user} />
     </div>
   )
 }

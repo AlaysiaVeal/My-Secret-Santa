@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react"
 import Client from "../services/api"
 
-const ListCard = ({list, id}) => {
+const ListCard = ({list, id, handleDelete}) => {
  /* const [lists, setLists] = useState('') 
   useEffect(async() => {
       const res = await Client.get(`/list/${id}`)
@@ -11,6 +11,7 @@ const ListCard = ({list, id}) => {
     <div>
       <div key={id}>
           <h3>{list}</h3>
+          <button onClick={() => handleDelete(id)}></button>
       </div>
     {/*   ))} */}
     </div>

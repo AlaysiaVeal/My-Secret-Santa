@@ -10,7 +10,6 @@ const List = ({ user, authenticated }) => {
   const [lists, setList] = useState([])
 
   const initial = {
-    /* listId: parseInt(list?.id), */
     userId: parseInt(user?.id),
     username: '',
     list: ''
@@ -42,6 +41,10 @@ const List = ({ user, authenticated }) => {
     }
     const payload = await Client.post('/list', newData)
     setFormValues(payload)
+    getList()
+  }
+  const handleDelete = async (id) => {
+    await Client.delete(`/list/${id}`)
     getList()
   }
 
@@ -76,6 +79,7 @@ const List = ({ user, authenticated }) => {
             key={list?.id}
             username={list?.username}
             list={list?.list}
+            handleDelete={handleDelete}
           />
         ))}
       </div>
