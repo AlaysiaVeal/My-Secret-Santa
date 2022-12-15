@@ -4,22 +4,10 @@ import ListCard from '../components/listCard'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const List = ({ user, authenticated }) => {
-  const ref = useRef(null)
-  const submitEditRef = useRef(null)
-  const editButton = useRef(null)
-  const transformEdit = async (content) => {
-    setEditValue({ content: content })
-    const editButtonRef = editButton.current
-    const textarea = ref.current
-    const submitEdit = submitEditRef.current
-    textarea.className = 'editTextArea'
-    textarea.readOnly = false
-    submitEdit.className = 'submitEdit'
-    editButtonRef.className = 'hiddenButton'
-  }
   const initialEdit = {
     list: ''
   }
+  const ref = useRef(initialEdit)
   const [list, editList] = useState(initialEdit)
 
   const [lists, setList] = useState([])
@@ -67,14 +55,8 @@ const List = ({ user, authenticated }) => {
   }
 
   const handleEdit = async (id) => {
-    const editButtonRef = editButton.current
     const textarea = ref.current
-    const submitEdit = submitEditRef.current
-    textarea.readOnly = true
-    textarea.className = 'reviewArea'
-    submitEdit.className = 'hiddenButton'
-    editButtonRef.className = ''
-    await Client.put(`/list/${id}`, editList)
+    await Client.put(`/list/${id}`, initialEdit)
     getList()
   }
 
@@ -110,6 +92,7 @@ const List = ({ user, authenticated }) => {
             username={list?.username}
             list={list?.list}
             handleDelete={handleDelete}
+            handleEdit={handleEdit}
           />
         ))}
       </div>
