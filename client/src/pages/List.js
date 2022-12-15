@@ -5,14 +5,34 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 const List = ({ user, authenticated }) => {
   let navigate = useNavigate()
-  const userId = useParams()
+  const { listId } = useParams()
+
+  const [lists, setList] = useState([])
+
   const initial = {
+    /* listId: parseInt(list?.id), */
     userId: parseInt(user?.id),
     username: '',
     list: ''
   }
-  const [lists, setList] = useState([])
+
   let [formValues, setFormValues] = useState(initial)
+
+  const getList = async () => {
+    const res = await Client.get(`/list/`)
+    let sortedLists = []
+    res.data.forEach((list) => {
+      if (list.userId === user.id) {
+        sortedLists.push(list)
+        /*  console.log(sortedLists) */
+      }
+    })
+    setList(sortedLists)
+  }
+
+  useEffect(() => {
+    getList()
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -21,14 +41,8 @@ const List = ({ user, authenticated }) => {
       ...formValues
     }
     const payload = await Client.post('/list', newData)
-    console.log(formValues)
     setFormValues(payload)
-  }
-
-  const getList = async () => {
-    const res = await Client.get('/list/')
-    setList(res.data)
-    navigate('/')
+    getList()
   }
 
   const handleChange = (e) => {
@@ -55,12 +69,13 @@ const List = ({ user, authenticated }) => {
         </div>
       </form>
       <div>
+        <h2>My Christmas List</h2>
         {lists?.map((list) => (
           <ListCard
-            id={user?.id}
+            id={list?.id}
             key={list?.id}
             username={list?.username}
-            item={list?.items}
+            list={list?.list}
           />
         ))}
       </div>
