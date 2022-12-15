@@ -50,13 +50,10 @@ const List = ({ user, authenticated }) => {
     getList()
   }
 
-  const editChange = (e) => {
-    editList({ ...list, [e.target.name]: e.target.value })
-  }
-
-  const handleEdit = async (id) => {
+  const handleEdit = async (e, id) => {
+    e.preventDefault()
     const textarea = ref.current
-    await Client.put(`/list/${id}`, initialEdit)
+    await Client.put(`/list/${id}`, editList)
     getList()
   }
 

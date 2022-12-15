@@ -13,11 +13,7 @@ const Profile = ({user}) => {
   }
   const [form, setForm] = useState(initial)
 
-  const [edit, setEdit] = useState(initial)
 
-  const handleEdit = (e) => {
-    setEdit({ ...edit, [e.target.name]: e.target.value })
-  }
   const handleChange = (e) => {
     setForm({...form, [e.target.name]: e.target.value})
   }
@@ -29,18 +25,6 @@ const Profile = ({user}) => {
     }
     const res = await Client.put(`/user/login/${user.id}`, data)
     console.log(res.data)
-  }
-  const handleEditSubmit = async (e, id) => {
-    /* const editButtonRef = editButton.current
-    const textarea = ref.current
-    const submitEdit = submitEditRef.current
-    textarea.readOnly = true
-    textarea.className = 'reviewArea'
-    submitEdit.className = 'hiddenButton'
-    editButtonRef.className = '' */
-    e.preventDefault()
-    await Client.put(`/users/password/${id}`)
-    navigate('/profile')
   }
   return (
     <div>

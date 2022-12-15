@@ -24,9 +24,6 @@ const Nav = ({authenticated, user, handleLogOut}) => {
     <div className="nav">
       <nav>
         {authenticated && user ? authentication : unauthenticatedOptions}
-        {/*  <Link to='/' className="home">Home</Link>
-        <Link to='/about' className="about">About</Link> */}
-        {/* <Link to='/list' className="about">List</Link> */}
       </nav>
     </div>
   )
