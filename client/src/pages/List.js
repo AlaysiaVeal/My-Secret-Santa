@@ -66,7 +66,7 @@ const List = ({ user, authenticated }) => {
   }
 
   return user && authenticated ? (
-    <div>
+    <div className="listpage">
       <div className="form">
         <form onSubmit={handleSubmit}>
           <div className="input-container">

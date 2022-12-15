@@ -23,9 +23,9 @@ const Home = () => {
       <button onClick={handleClick}></button>
       {user?.map((res) => (
         <ListGenerator
-          id={res[10]?.id}
+          id={res?.id}
           handleClick={handleClick}
-          username={res[10]?.username}
+          username={res?.username}
           key={res?.id}
         />
       ))}
