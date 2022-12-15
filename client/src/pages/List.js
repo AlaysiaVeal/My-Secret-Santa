@@ -67,6 +67,13 @@ const List = ({ user, authenticated }) => {
   }
 
   const handleEdit = async (id) => {
+    const editButtonRef = editButton.current
+    const textarea = ref.current
+    const submitEdit = submitEditRef.current
+    textarea.readOnly = true
+    textarea.className = 'reviewArea'
+    submitEdit.className = 'hiddenButton'
+    editButtonRef.className = ''
     await Client.put(`/list/${id}`, editList)
     getList()
   }
