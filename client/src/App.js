@@ -39,7 +39,7 @@ function App() {
           handleLogOut={handleLogOut}
         />
         <Routes>
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile user={user} />} />
           <Route path="/" element={<Home />} />
           <Route
             path="/list"

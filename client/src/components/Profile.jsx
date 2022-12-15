@@ -4,19 +4,31 @@ import { useState } from "react"
 
 
 
-const Profile = () => {
+const Profile = ({user}) => {
   const navigate = useNavigate()
   const initial = {
+    userId: parseInt(user?.id),
     username: '',
     password: '',
-    confirmPassword: ''
   }
   const [form, setForm] = useState(initial)
 
   const [edit, setEdit] = useState(initial)
-  
+
   const handleEdit = (e) => {
     setEdit({ ...edit, [e.target.name]: e.target.value })
+  }
+  const handleChange = (e) => {
+    setForm({...form, [e.target.name]: e.target.value})
+  }
+  const handleSubmit = async(e,id) => {
+    e.preventDefault()
+    const data = {
+      userId: parseInt(form.userId),
+      ...form
+    }
+    const res = await Client.put(`/user/login/${user.id}`, data)
+    console.log(res.data)
   }
   const handleEditSubmit = async (e, id) => {
     /* const editButtonRef = editButton.current
@@ -27,19 +39,26 @@ const Profile = () => {
     submitEdit.className = 'hiddenButton'
     editButtonRef.className = '' */
     e.preventDefault()
-    await Client.put(`/user/${id}`)
+    await Client.put(`/users/password/${id}`)
     navigate('/profile')
   }
   return (
     <div>
       <h2>edit profile</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>username</label>
-        <input/>
+        <input
+        type="text"
+        onChange={handleChange}
+        name="username"
+        />
         <label>password</label>
-        <input/>
-        <label>confirm password</label>
-        <input></input>
+        <input
+        type="text"
+        onChange={handleChange}
+        name="password"
+        />
+        <button></button>
       </form>
     </div>
   )
