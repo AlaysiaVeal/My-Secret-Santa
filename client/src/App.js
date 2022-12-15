@@ -8,6 +8,7 @@ import { CheckSession } from './services/auth'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import { useState, useEffect } from 'react'
+import Profile from './components/Profile'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -38,6 +39,7 @@ function App() {
           handleLogOut={handleLogOut}
         />
         <Routes>
+          <Route path="/profile" element={<Profile />} />
           <Route path="/" element={<Home />} />
           <Route
             path="/list"

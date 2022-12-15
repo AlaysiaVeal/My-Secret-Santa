@@ -4,7 +4,7 @@ const Nav = ({authenticated, user, handleLogOut}) => {
   if (user) {
     authentication = (
       <nav className="nav">
-        <h2>Welcome {user?.email}</h2>
+        <h2>Welcome <Link to='/profile'>{user?.email}</Link></h2>
         <Link to="/">Home</Link>
         <Link to="/about">about</Link>
         <Link to="/list">List</Link>

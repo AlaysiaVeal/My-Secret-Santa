@@ -10,8 +10,6 @@ const Home = () => {
     setUsers(res.data)
   }
 
-  const random = () => {}
-
   return (
     <div>
       <h2>Welcome</h2>
