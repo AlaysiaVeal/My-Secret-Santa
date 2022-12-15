@@ -21,10 +21,16 @@ const Login = ({ setUser, toggleAuthenticated }) => {
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Email </label>
-          <input type="email" onChange={handleChange} name="email" required />
+          <input
+            type="email"
+            className="input"
+            onChange={handleChange}
+            name="email"
+            required
+          />
         </div>
         <div className="input-container">
-          <label>Password </label>
+          <label className="input">Password </label>
           <input
             type="password"
             onChange={handleChange}

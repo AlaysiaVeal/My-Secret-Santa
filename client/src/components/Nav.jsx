@@ -4,11 +4,11 @@ const Nav = ({authenticated, user, handleLogOut}) => {
   if (user) {
     authentication = (
       <nav className="nav">
-        <h2>Welcome <Link to='/profile'>{user?.email}</Link></h2>
-        <Link to="/">Home</Link>
-        <Link to="/about">about</Link>
-        <Link to="/list">List</Link>
-        <Link id="logout" onClick={handleLogOut} to='/'>Log Out</Link>
+        <h2 className="intro">Welcome <Link to='/profile' className="intro">{user?.email}</Link></h2>
+        <Link to="/"className="home">Home</Link>
+        <Link to="/about" className="about">about</Link>
+        <Link to="/list" className="login">List</Link>
+        <Link id="logout" className="login" onClick={handleLogOut} to='/'>Log Out</Link>
       </nav>
     )
   }

@@ -41,6 +41,7 @@ const Register = () => {
         <div className="input-container">
           <label htmlFor="email">Email: </label>
           <input
+            className="login"
             type="text"
             name="email"
             onChange={handleChange}
@@ -50,6 +51,7 @@ const Register = () => {
           ></input>
           <label htmlFor="username">Username: </label>
           <input
+            className="login"
             type="text"
             onChange={handleChange}
             value={formValues.username}
@@ -61,6 +63,7 @@ const Register = () => {
         <div className="input-container">
           <label htmlFor="password">Password: </label>
           <input
+            className="input"
             type="password"
             onChange={handleChange}
             value={formValues.password}
@@ -70,6 +73,7 @@ const Register = () => {
           />
           <label>Confirm Password: </label>
           <input
+            className="input"
             type="password"
             onChange={handleChange}
             value={formValues.confirmPassword}

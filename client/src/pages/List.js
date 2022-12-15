@@ -70,11 +70,22 @@ const List = ({ user, authenticated }) => {
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>username</label>
-          <input type="username" onChange={handleChange} name="username" />
+          <input
+            className="input"
+            type="username"
+            onChange={handleChange}
+            name="username"
+          />
         </div>
         <div className="input-container">
           <label>Item 1 </label>
-          <input type="list" onChange={handleChange} name="list" required />
+          <input
+            className="input"
+            type="list"
+            onChange={handleChange}
+            name="list"
+            required
+          />
         </div>
         <div className="button-container">
           <input type="submit" />

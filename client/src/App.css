@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -41,19 +42,43 @@
 .nav {
  /*  display: flex; */
   justify-content: space-evenly; 
-  background-color: salmon;
+  background-color: darkgreen;
+  border: solid 1px;
 }
 .home{
   text-decoration: none;
   margin-right: 30px;
+  color: lightblue;
 }
 .about{
 text-decoration: none;
 margin-right: 30px;
+color: lightblue;
 }
 form {
   align-content: center;
-  width: 200px;
-  height: 150px;
-  
+  width: 300px;
+  height: 300px;
+  margin-left: 500px;
+  margin-top: 250px;
+}
+.homepage{
+  background-image: url('https://cdn4.vectorstock.com/i/1000x1000/66/33/cartoon-of-winter-landscape-with-snowy-ground-vector-22706633.jpg');
+  background-size: cover;
+  height: 100vh;
+  object-fit: fill;
+  margin: 0;
+} 
+.intro{
+  text-decoration: none;
+  color: lightblue;
+}
+.login {
+  text-decoration: none;
+  margin-right: 30px;
+  color: lightblue;
+}
+button {
+  height: 50px;
+  width: 50px;
 }

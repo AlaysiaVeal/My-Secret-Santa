@@ -17,8 +17,8 @@ const Home = () => {
     setUsers(res.data)
   }
   return (
-    <div>
-      <h2 className="">Welcome to Santa Wishlist!</h2>
+    <div className="homepage">
+      <h2>Welcome to Santa Wishlist!</h2>
       <h3>Pick a Name</h3>
       <button onClick={handleClick}></button>
       {user?.map((res) => (
