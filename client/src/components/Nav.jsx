@@ -13,7 +13,7 @@ const Nav = ({authenticated, user, handleLogOut}) => {
     )
   }
   let unauthenticatedOptions = (
-    <nav>
+    <nav className="nav">
         <Link to='/' className="home">Home</Link>
         <Link to='/about' className="about">About</Link>
         <Link to='/login' className="about">Login</Link>

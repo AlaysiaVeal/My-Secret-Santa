@@ -67,31 +67,33 @@ const List = ({ user, authenticated }) => {
 
   return user && authenticated ? (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div className="input-container">
-          <label>username</label>
-          <input
-            className="input"
-            type="username"
-            onChange={handleChange}
-            name="username"
-          />
-        </div>
-        <div className="input-container">
-          <label>Item 1 </label>
-          <input
-            className="input"
-            type="list"
-            onChange={handleChange}
-            name="list"
-            required
-          />
-        </div>
-        <div className="button-container">
-          <input type="submit" />
-        </div>
-      </form>
-      <div>
+      <div className="form">
+        <form onSubmit={handleSubmit}>
+          <div className="input-container">
+            <label>username</label>
+            <input
+              className="input"
+              type="username"
+              onChange={handleChange}
+              name="username"
+            />
+          </div>
+          <div className="input-container">
+            <label>Item 1 </label>
+            <input
+              className="input"
+              type="list"
+              onChange={handleChange}
+              name="list"
+              required
+            />
+          </div>
+          <div className="button-container">
+            <input type="submit" />
+          </div>
+        </form>
+      </div>
+      <div className="list">
         <h2>My Christmas List</h2>
         {lists?.map((list) => (
           <ListCard

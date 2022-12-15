@@ -57,10 +57,17 @@ color: lightblue;
 }
 form {
   align-content: center;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 100px;
   margin-left: 500px;
   margin-top: 250px;
+  border: 2px solid black;
+  padding-bottom: 100px;
+  padding-top: 100px;
+  padding-right: 50px;
+  border-radius: 10%;
+  background-color: lightblue;
+  color: black
 }
 .homepage{
   background-image: url('https://cdn4.vectorstock.com/i/1000x1000/66/33/cartoon-of-winter-landscape-with-snowy-ground-vector-22706633.jpg');
@@ -81,4 +88,7 @@ form {
 button {
   height: 50px;
   width: 50px;
+}
+.input {
+  width: 100px;
 }

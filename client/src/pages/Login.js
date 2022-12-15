@@ -30,8 +30,9 @@ const Login = ({ setUser, toggleAuthenticated }) => {
           />
         </div>
         <div className="input-container">
-          <label className="input">Password </label>
+          <label>Password </label>
           <input
+            className="input"
             type="password"
             onChange={handleChange}
             name="password"
