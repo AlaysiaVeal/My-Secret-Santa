@@ -8,8 +8,7 @@ const Register = () => {
   const initialFormValues = {
     username: '',
     email: '',
-    password: '',
-    confirmPassword: ''
+    password: ''
   }
   const [formValues, setFormValues] = useState(initialFormValues)
   const [pass, setPass] = useState('right')
@@ -23,10 +22,9 @@ const Register = () => {
       await RegisterUser({
         email: formValues.email,
         username: formValues.username,
-        password: formValues.password
-        /* confirmPassword: formValues.password */
+        password: formValues.password,
+        confirmPassword: formValues.confirmPassword
       })
-
       setPass('right')
       setFormValues(initialFormValues)
       navigate('/login')
@@ -81,7 +79,6 @@ const Register = () => {
             name="confirmPassword"
             required
           />
-          {/* <p className={pass}>Passwords are not the same</p> */}
         </div>
         <div className="button-container">
           <button

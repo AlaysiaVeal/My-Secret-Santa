@@ -7,15 +7,14 @@ const Home = () => {
   const [user, setUsers] = useState([])
 
   const handleClick = async (data, id) => {
-    const res = await Client.get('/user')
-    /*  let sortedUsers = []
+    const res = await Client.get('/user/')
+    let sortedUsers = []
     res.data.forEach((user) => {
-      if (res.data.id === user.id) {
-        console.log(user)
-      }
-    }) */
-    setUsers(res.data)
+      sortedUsers.push(user)
+    })
+    setUsers(sortedUsers)
   }
+
   return (
     <div className="homepage">
       <h2>Welcome to Santa Wishlist!</h2>
